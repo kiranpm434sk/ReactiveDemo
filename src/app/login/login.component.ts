@@ -21,7 +21,14 @@ export class LoginComponent implements OnInit {
     });
   }
   onLoginSubmit(){
-    this._userdata.login(this.login.value.user_email,this.login.value.user_password);
-    this._router.navigate(['/users']);
+    this._userdata.login(
+      this.login.value.user_email,
+      this.login.value.user_password
+    );
+    if (this._userdata.redirectURL) {
+      this._router.navigateByUrl(this._userdata.redirectURL);
+    } else {
+      this._router.navigate(["/users"]);
+    }
   }
 }

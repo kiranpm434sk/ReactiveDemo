@@ -12,6 +12,8 @@ import { Demo2Component } from './demo2/demo2.component';
 import { Product1Component } from './product1/product1.component';
 import { ProductResolveService } from './product-resolve.service';
 import { HomeComponent } from './home/home.component';
+import { ProdReactiveDemoComponent } from './prod-reactive-demo/prod-reactive-demo.component';
+import { TaskReactiveDemoComponent } from './task-reactive-demo/task-reactive-demo.component';
 const arr : Routes=[
   {path:'',component:HomeComponent},
   {path:'product1',resolve:{pdata:ProductResolveService},component:Product1Component},
@@ -20,13 +22,15 @@ const arr : Routes=[
   {path:'edituserreactive/:user_email',component:EdituserreactiveComponent},
   {path:'edittask/:id',component:EdittaskComponent},
   {path:'login',component:LoginComponent},
+  {path:'task-reactive',component:TaskReactiveDemoComponent},
   {path:'signup2',canActivate:[UserGuardService],component:SignupReactiveDemoComponent},
   {path:'demo',component:DemoComponent},
   {path:'demo1/:id',component:Demo1Component},
   {path:'demo2',component:Demo2Component},
   {path:'product',canLoad:[UserGuardService],loadChildren:'./productdisplay/product.module#ProductModule'},
   // {path:'product',loadChildren:'./display/user.module#UserModule'},
-  {path:'users',data:{preload:true},loadChildren:'./userdisplay/user.module#UserModule'}
+  {path:'users',data:{preload:true},loadChildren:'./userdisplay/user.module#UserModule'},
+  {path:'reactive',component:ProdReactiveDemoComponent}
 ];
 
 export const routing=RouterModule.forRoot(arr,{preloadingStrategy:PreloadAllModules});

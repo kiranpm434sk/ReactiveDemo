@@ -26,6 +26,8 @@
         <li routerLinkActive="active"><a  routerLink="/signup2">SignupReactiveDemo</a></li>
         <li routerLinkActive="active"><a  routerLink="/demo">Demo</a></li>
         <li routerLinkActive="active"><a  routerLink="/product1">Product1</a></li>
+        <li routerLinkActive="active"><a  routerLink="/task-reactive">Reactive Task</a></li>
+        <li routerLinkActive="active"><a  routerLink="/reactive">Reactive Product</a></li>
         <li *ngIf="!isLoggedIn()" routerLinkActive="active"><a  routerLink="/login">Login</a></li>
         <li *ngIf="isLoggedIn()" routerLinkActive="active"><a (click)="onLogOut()" >Log Out</a></li>
       </ul>

@@ -21,7 +21,9 @@ import { Interceptordemo } from './intercepterdemo';
 import { Product1Component } from './product1/product1.component';
 import { HomeComponent } from './home/home.component';
 import { CustomerModule } from './customer/customer.module';
-import { SidebarComponent } from './sidebar/sidebar.component';
+
+import { ProdReactiveDemoComponent } from './prod-reactive-demo/prod-reactive-demo.component';
+import { TaskReactiveDemoComponent } from './task-reactive-demo/task-reactive-demo.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     Demo1Component,
     Demo2Component,
     Product1Component,
-    HomeComponent, SidebarComponent
+    HomeComponent, ProdReactiveDemoComponent, TaskReactiveDemoComponent
   ],
   imports: [
     BrowserModule,

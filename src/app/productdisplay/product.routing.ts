@@ -8,12 +8,14 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 
 
 
+
 const arr : Routes=[
   {path:'', children:[
     {path:'',component:ProductdisplayComponent},
     {path:'addproduct',  component:ProductaddComponent},
     {path:'sidebar',  component:SidebarComponent},
-    {path:'editproduct/:pro_id',component:EditproductComponent}
+    {path:'editproduct/:pro_id',component:EditproductComponent},
+
 ]}
 ];
 
