@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 
   <h1>Reactive Product Form</h1>
   <form [formGroup]="taskapp" (ngSubmit)="onTaskSave()">
@@ -10,19 +10,49 @@
     </div>
     <div class="form-group">
       <label>Title</label>
-      <input formControlName="Title" type="text" class="form-control" placeholder="Enter Name ">
+      <input formControlName="Title" type="text" class="form-control" placeholder="Enter Name "> -->
       <!-- <label class="alert alert-danger"  *ngIf="proapp.get('pro_name').hasError('required') && !proapp.get('pro_name').pristine " >name is required</label> -->
-    </div>
+    <!-- </div>
 
     <div class="form-group">
       <label>Status</label>
-      <input formControlName="Status" type="text" class="form-control" placeholder="Enter Name ">
+      <input formControlName="Status" type="text" class="form-control" placeholder="Enter Name "> -->
       <!-- <label class="alert alert-danger"  *ngIf="proapp.get('pro_name').hasError('required') && !proapp.get('pro_name').pristine " >name is required</label> -->
-    </div>
+    <!-- </div>
 
     <div class="form-group">
       <button type="submit" class="form-control btn btn-primary">Save User</button>
     </div>
   </form>
 </div>
+ -->
 
+
+ <div class="container">
+  <div class="col-md-3">
+    <h3>Search Here</h3><input placeholder="Search Here" name="n1" #f type="text" (keyup)="search(f.value)">
+
+  </div>
+  <div class="col-md-9">
+<div class="row">
+<table class="table" >
+  <thead>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of arr" >
+      <td>{{item.Id}}</td>
+      <td>{{item.Title}}</td>
+      <td>{{item.Status}}</td>
+      <td><button class="btn btn-info" (click)="onTaskDelete(item)" >Delete</button>
+      <!-- <button class="btn btn-info" (click)="onTaskEdit(item)"  >edit</button> -->
+      </td>
+    </tr>
+  </tbody>
+  </table>
+  </div>
+</div>
+</div>

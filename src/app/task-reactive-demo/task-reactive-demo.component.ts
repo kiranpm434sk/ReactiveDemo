@@ -16,6 +16,7 @@ import { TaskdataService } from '../taskdisplay/taskdata.service';
 export class TaskReactiveDemoComponent implements OnInit {
 
   taskapp: FormGroup;
+  arr: Task[] = [];
   // debouncer: any;
   constructor(private fb: FormBuilder, private _data: TaskdataService) {}
 
@@ -26,20 +27,69 @@ export class TaskReactiveDemoComponent implements OnInit {
       Status:new FormControl(null)
 
     });
+    this._data.getAllTasks().subscribe(
+      (data: Task[]) => {
+        this.arr = data;
+      },
+      function(error) {
+        alert(error);
+      },
+      function() {}
+    );
   }
-  onTaskSave() {
-    this._data
-      .addTask(
-        new Task(
-          this.taskapp.value.Id,
-          this.taskapp.value.Title,
-          this.taskapp.value.Status
+  onTaskDelete(item: Task) {
+    this._data.deleteTask(item.Id).subscribe((data: any) => {
+      this.arr.splice(this.arr.indexOf(item), 1);
+    });
+  }
+  // onTaskEdit(item:Task){
+  //   this._router.navigate(['/edittask',item.Id]);
+  // }
 
-        )
-      )
-      .subscribe((x: any) => {
-        alert("record added");
-      });
+  // onTaskSave() {
+  //   this._data
+  //     .addTask(
+  //       new Task(
+  //         this.taskapp.value.Id,
+  //         this.taskapp.value.Title,
+  //         this.taskapp.value.Status
+
+  //       )
+  //     )
+  //     .subscribe((x: any) => {
+  //       alert("record added");
+  //     });
+  // }
+
+  onSideBarClick(value) {
+    if (value != "") {
+      this.arr = this.arr.filter(x => x.Id.indexOf(value) != -1);
+    } else {
+      this._data.getAllTasks().subscribe(
+        (data: Task[]) => {
+          this.arr = data;
+        },
+        function(error) {
+          alert(error);
+        },
+        function() {}
+      );
+    }
+  }
+  search(value) {
+    if (value != "") {
+      this.arr = this.arr.filter(x => x.Id.indexOf(value) != -1);
+    } else {
+      this._data.getAllTasks().subscribe(
+        (data: Task[]) => {
+          this.arr = data;
+        },
+        function(error) {
+          alert(error);
+        },
+        function() {}
+      );
+    }
   }
 
 }

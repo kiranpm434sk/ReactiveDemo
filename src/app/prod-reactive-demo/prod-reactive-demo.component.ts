@@ -16,6 +16,7 @@ import { Product } from '../productdisplay/product';
 export class ProdReactiveDemoComponent implements OnInit {
 
   proapp: FormGroup;
+  arr: Product[] = [];
   // debouncer: any;
   constructor(private fb: FormBuilder, private _data: ProductdataService) {}
 
@@ -29,22 +30,76 @@ export class ProdReactiveDemoComponent implements OnInit {
       pro_mfg:new FormControl(null),
       pro_img:new FormControl(null)
     });
+    this._data.getAllProducts().subscribe(
+      (data: Product[]) => {
+        this.arr = data;
+
+      },
+      function(error) {
+        alert(error);
+      },
+      function() {}
+    );
   }
-  onProductSave() {
-    this._data
-      .addProduct(
-        new Product(
-          this.proapp.value.pro_id,
-          this.proapp.value.pro_name,
-          this.proapp.value.pro_price,
-          this.proapp.value.pro_desc,
-          this.proapp.value.pro_qty,
-          this.proapp.value.pro_mfg,
-          this.proapp.value.pro_img
-        )
-      )
-      .subscribe((x: any) => {
-        alert("record added");
-      });
+
+  // onProductSave() {
+  //   this._data
+  //     .addProduct(
+  //       new Product(
+  //         this.proapp.value.pro_id,
+  //         this.proapp.value.pro_name,
+  //         this.proapp.value.pro_price,
+  //         this.proapp.value.pro_desc,
+  //         this.proapp.value.pro_qty,
+  //         this.proapp.value.pro_mfg,
+  //         this.proapp.value.pro_img
+  //       )
+  //     )
+  //     .subscribe((x: any) => {
+  //       alert("record added");
+  //     });
+  // }
+
+
+
+
+  onProductDelete(item: Product) {
+    this._data.deleteProduct(item.pro_id).subscribe((data: any) => {
+      this.arr.splice(this.arr.indexOf(item), 1);
+    });
+  }
+  // onProductEdit(item:Product){
+  //   this._router.navigate(['/product/editproduct',item.pro_id]);
+  // }
+
+  onSideBarClick(value) {
+    if (value != "") {
+      this.arr = this.arr.filter(x => x.pro_name.indexOf(value) != -1);
+    } else {
+      this._data.getAllProducts().subscribe(
+        (data: Product[]) => {
+          this.arr = data;
+        },
+        function(error) {
+          alert(error);
+        },
+        function() {}
+      );
+    }
+  }
+  search(value) {
+    if (value != "") {
+      this.arr = this.arr.filter(x => x.pro_name.indexOf(value) != -1);
+    } else {
+      this._data.getAllProducts().subscribe(
+        (data: Product[]) => {
+          this.arr = data;
+        },
+        function(error) {
+          alert(error);
+        },
+        function() {}
+      );
+    }
   }
 }
