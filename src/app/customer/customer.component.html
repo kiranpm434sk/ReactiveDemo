@@ -1,0 +1,62 @@
+<h1>Reactive example</h1>
+<div class="container">
+  <form [formGroup]="customer" (ngSubmit)="onsubmit()">
+      <div class="form-group">
+          <label>First Name</label>
+          <input formControlName="fname" type="text" placeholder="Enter First Name" class="form-control">
+          <label class="alert alert-danger" *ngIf="customer.get('fname').hasError('required')" >First Name is Required</label>
+          <label class="alert alert-danger" *ngIf="customer.get('fname').hasError('invalidName')" >First Name is invalid</label>
+          <label class="alert alert-danger" *ngIf="customer.get('fname').hasError('minlength')" >Name should be > 4</label>
+        </div>
+    <div class="form-Group">
+        <label>Last Name</label>
+        <input formControlName="lname" type="text" placeholder="enter last name" class="form-control">
+
+      </div>
+      <div formGroupName="pwdGroup" class="form-Group">
+        <div >
+          <label >Enter the Password</label>
+          <input type='password' class="form-control" placeholder="enter the password" formControlName="pwd">
+          <label *ngIf="customer.get('pwdGroup').get('pwd').hasError('required')" class="alert alert-danger" >Password is required</label>
+        </div>
+        <div >
+            <label >Enter the confirm Password</label>
+            <input type='password' class="form-control" placeholder="enter the password" formControlName="cnf_pwd">
+            <label *ngIf="customer.get('pwdGroup').get('cnf_pwd').hasError('required')" class="alert alert-danger" >Password is required</label>
+          </div>
+            <label *ngIf="customer.get('pwdGroup').hasError('passwordNotMatched')" class="alert alert-danger" >confirm password and password should be same</label>
+
+      </div>
+      <div class="form-group">
+          Notification:
+          <input type="radio" value="email" formControlName="notification" >Email
+          <input type="radio" value="text" formControlName="notification" >Text
+        </div>
+        <div class="form-group" >
+          <label>Mobile Number</label>
+          <input type="number" formControlName="mob_no" class="form-control">
+          <label class="alert alert-danger" *ngIf="customer.get('mob_no').hasError('required')" >Mobile number is required</label>
+        </div>
+        <div class="form-group" >
+            <label>Email</label>
+            <input type="text" formControlName="email" class="form-control">
+            <label class="alert alert-danger" *ngIf="customer.get('email').hasError('required')" >Email is required</label>
+          </div>
+
+          <div class="form-Group">
+            <button class="btn btn-info" (click)="onAddHobbyClicked()">Add Hobby</button>
+            <div formArrayName="hobby">
+              <!-- <div *ngFor="let item of customer.get('hobby').controls;let i=index"> -->
+                  <div *ngFor="let item of getControls();let i=index" >
+                <input type="text" placeholder="Enter Hobby" [formControlName]="i">
+                <button class="btn btn-primary" (click)="onDeleteHobbyClicked(i)">Delete</button>
+              </div>
+            </div>
+          </div>
+
+
+<div class="form-Group">
+<button type="submit" class="form-control btn btn-primary">save</button>
+</div>
+</form>
+</div>

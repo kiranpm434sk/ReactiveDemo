@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="col-md-3">
+    <h3>Search Here</h3><input placeholder="Search Here"  name="n1" #f type="text" (keyup)="search(f.value)">
+
+  </div>
+  <!-- <div class="col-md-9"> -->
+      <div class="col-md-9">
+          <div *ngIf="loading" class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                <span class="sr-only">45% Complete</span>
+              </div>
+            </div>
+<div class="row">
+<table class="table" >
+<thead>
+  <th>Email</th>
+  <th>Name</th>
+  <th>Mobile No</th>
+  <th>Action</th>
+</thead>
+<tbody>
+  <tr *ngFor="let item of arr" >
+    <td>{{item.user_email}}</td>
+    <td>{{item.user_name}}</td>
+    <td>{{item.user_mobile_no}}</td>
+    <td><button class="btn btn-info" (click)="onUserDelete(item)" >Delete</button>
+    <button class="btn btn-info" (click)="onUserEdit(item)"  >edit</button>
+    <button class="btn btn-info"  (click)="onUserEditReactive(item)" >edit user reactive</button>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
