@@ -1,0 +1,11 @@
+[0826/084203.959:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/084204.293:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/084204.370:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/084204.439:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/084205.207:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/084738.112:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/084742.058:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/090131.142:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/090250.891:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/090258.698:ERROR:process_info.cc(359)] UncheckedAllocate
+[0826/092335.042:ERROR:settings.cc(320)] Settings magic is not 1129342067

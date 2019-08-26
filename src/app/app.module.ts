@@ -24,6 +24,8 @@ import { CustomerModule } from './customer/customer.module';
 
 import { ProdReactiveDemoComponent } from './prod-reactive-demo/prod-reactive-demo.component';
 import { TaskReactiveDemoComponent } from './task-reactive-demo/task-reactive-demo.component';
+import { TaskeditReactiveComponent } from './taskedit-reactive/taskedit-reactive.component';
+import { TaskaddReactiveComponent } from './taskadd-reactive/taskadd-reactive.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,7 @@ import { TaskReactiveDemoComponent } from './task-reactive-demo/task-reactive-de
     Demo1Component,
     Demo2Component,
     Product1Component,
-    HomeComponent, ProdReactiveDemoComponent, TaskReactiveDemoComponent
+    HomeComponent, ProdReactiveDemoComponent, TaskReactiveDemoComponent, TaskeditReactiveComponent, TaskaddReactiveComponent
   ],
   imports: [
     BrowserModule,

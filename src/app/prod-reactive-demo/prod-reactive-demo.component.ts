@@ -8,6 +8,7 @@ import {
 } from "@angular/forms";
 import { ProductdataService } from '../productdisplay/productdata.service';
 import { Product } from '../productdisplay/product';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-prod-reactive-demo',
   templateUrl: './prod-reactive-demo.component.html',
@@ -18,7 +19,7 @@ export class ProdReactiveDemoComponent implements OnInit {
   proapp: FormGroup;
   arr: Product[] = [];
   // debouncer: any;
-  constructor(private fb: FormBuilder, private _data: ProductdataService) {}
+  constructor(private fb: FormBuilder, private _data: ProductdataService,private _router:Router) {}
 
   ngOnInit() {
     this.proapp = this.fb.group({
@@ -68,9 +69,9 @@ export class ProdReactiveDemoComponent implements OnInit {
       this.arr.splice(this.arr.indexOf(item), 1);
     });
   }
-  // onProductEdit(item:Product){
-  //   this._router.navigate(['/product/editproduct',item.pro_id]);
-  // }
+  onProductEdit(item:Product){
+    this._router.navigate(['/product/editproduct',item.pro_id]);
+  }
 
   onSideBarClick(value) {
     if (value != "") {
